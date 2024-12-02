@@ -45,6 +45,31 @@
            DISPLAY " ======================================= ".
            DISPLAY "Enter your choice: " WITH NO ADVANCING.
            ACCEPT UserChoice.
-    
+
+        ProcessChoice.
+           EVALUATE UserChoice
+               WHEN 1
+                   DISPLAY "Option 1 Selected: Create New Order."
+               WHEN 2
+                   DISPLAY "Option 2 Selected: Edit Order."
+               WHEN 3
+                   DISPLAY "Option 3 Selected: Create Customer."
+               WHEN 4
+                   DISPLAY "Option 4 Selected: Edit Customer."
+               WHEN 5
+                   DISPLAY "Option 5 Selected: Reports."
+               WHEN 0
+                   DISPLAY "Exiting JanApp. Goodbye!"
+               WHEN OTHER
+                   DISPLAY "Invalid choice! Please try again."
+                   PERFORM DisplayMenu
+           END-EVALUATE.  
+
+      *> Return to menu unless exit is selected
+           IF UserChoice NOT = 0
+             PERFORM DisplayMenu
+             PERFORM ProcessChoice
+           END-IF.
+
         END PROGRAM JanApp.
       
